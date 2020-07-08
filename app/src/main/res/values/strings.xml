@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">PhonesApp</string>
+    <string name="cell_phone">Cell Phone</string>
+    <string name="skype">Skype</string>
+    <string name="home">Home</string>
+    <string name="profile">Profile</string>
+</resources>
