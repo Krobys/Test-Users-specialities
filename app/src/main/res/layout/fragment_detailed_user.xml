@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/rootLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/photo_image_view"
+                android:layout_width="150dp"
+                android:layout_height="150dp" />
+
+            <TextView
+                android:id="@+id/first_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="Владимир" />
+
+            <TextView
+                android:id="@+id/second_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="Миронов" />
+
+            <TextView
+                android:id="@+id/birthday_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="03-08-1972" />
+
+            <TextView
+                android:id="@+id/years_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="21 год" />
+
+            <TextView
+                android:id="@+id/specialty_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                tools:text="Менеджер" />
+
+        </LinearLayout>
+
+    </ScrollView>
+</layout>

@@ -1,7 +1,13 @@
 <resources>
-    <string name="app_name">PhonesApp</string>
-    <string name="cell_phone">Cell Phone</string>
-    <string name="skype">Skype</string>
-    <string name="home">Home</string>
-    <string name="profile">Profile</string>
+    <string name="app_name">TestApp</string>
+
+    <string name="error_connection_text">Нет соединения с интернетом! Установите стабильное интернет соединение и попробуйте снова!</string>
+
+    <plurals name="years_plural">
+        <item quantity="one">%s год</item>
+        <item quantity="two">%s года</item>
+        <item quantity="few">%s года</item>
+        <item quantity="many">%s лет</item>
+        <item quantity="other">%s лет</item>
+    </plurals>
 </resources>
