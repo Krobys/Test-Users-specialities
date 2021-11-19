@@ -11,7 +11,7 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuildersModule {
 
     @Binds
-    abstract fun bindPhoneListApp(app: TestApp): Application
+    abstract fun bindTestApp(app: TestApp): Application
 
     @ContributesAndroidInjector
     abstract fun bindMainActivity(): MainActivity
