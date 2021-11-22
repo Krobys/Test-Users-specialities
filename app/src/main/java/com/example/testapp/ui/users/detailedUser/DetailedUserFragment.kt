@@ -108,6 +108,6 @@ class DetailedUserFragment(override val layoutId: Int = R.layout.fragment_detail
     }
 
     companion object {
-        final val USER_KEY = "USER_KEY"
+        const val USER_KEY = "USER_KEY"
     }
 }

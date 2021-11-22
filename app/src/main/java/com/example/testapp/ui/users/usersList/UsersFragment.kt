@@ -67,6 +67,6 @@ class UsersFragment(override val layoutId: Int = R.layout.fragment_users) :
     }
 
     companion object {
-        final val SPECIALITY_KEY = "SPECIALITY_KEY"
+        const val SPECIALITY_KEY = "SPECIALITY_KEY"
     }
 }

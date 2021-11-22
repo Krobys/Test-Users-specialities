@@ -1,5 +1,6 @@
 package com.example.testapp.ui.users.usersList
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,12 +13,13 @@ class UsersAdapter(private val userClickCallback: ((UsersResponse.User) -> Unit)
 
     private val usersList: ArrayList<UsersResponse.User> = ArrayList()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setUsers(list: List<UsersResponse.User>) {
         usersList.run {
             clear()
             addAll(list)
         }
-        notifyDataSetChanged()
+        notifyDataSetChanged() //can be changed with diff util
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserViewHolder {

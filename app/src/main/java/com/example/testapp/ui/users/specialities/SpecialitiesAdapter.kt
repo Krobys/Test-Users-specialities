@@ -1,5 +1,6 @@
 package com.example.testapp.ui.users.specialities
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,12 +12,13 @@ class SpecialitiesAdapter(private val specialtyClickCallback: ((UsersResponse.Us
 
     private val specialitiesList: ArrayList<UsersResponse.User.Specialty> = ArrayList()
 
+    @SuppressLint("NotifyDataSetChanged")
     fun setSpecialities(list: List<UsersResponse.User.Specialty>) {
         specialitiesList.run {
             clear()
             addAll(list)
         }
-        notifyDataSetChanged()
+        notifyDataSetChanged() //can be changed with diff util
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialityViewHolder {

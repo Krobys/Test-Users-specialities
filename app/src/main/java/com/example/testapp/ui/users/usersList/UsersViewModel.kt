@@ -15,11 +15,11 @@ class UsersViewModel @Inject constructor(private val testRepository: TestReposit
     fun getUsersForSpeciality(specialityId: Int) {
         launchCoroutineScope {
             testRepository.requestUsersList {
-                it.fold(ifLeft = { error ->
+                it.fold(ifLeft = { _ ->
                     //do nothing
-                }, ifRight = {
+                }, ifRight = { dataWrapper ->
                     val users =
-                        it.data.response.filter { it.specialty.any { it.specialtyId == specialityId } }
+                        dataWrapper.data.response.filter { user -> user.specialty.any { specialty -> specialty.specialtyId == specialityId } }
                     usersLiveData.postValue(users)
                 })
             }
