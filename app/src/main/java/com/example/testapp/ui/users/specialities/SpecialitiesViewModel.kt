@@ -12,17 +12,23 @@ class SpecialitiesViewModel @Inject constructor(
     private val testRepository: TestRepository
 ) : BaseViewModel() {
 
-    val specialitiesLiveData: SingleLiveEvent<DataWrapper<List<UsersResponse.User.Specialty>>> = SingleLiveEvent()
+    val specialitiesLiveData: SingleLiveEvent<DataWrapper<List<UsersResponse.User.Specialty>>> =
+        SingleLiveEvent()
     val specialitiesError: SingleLiveEvent<Error> = SingleLiveEvent()
 
-    fun requestSpecialities(){
+    fun requestSpecialities() {
         launchCoroutineScope {
             testRepository.requestUsersList {
                 it.fold(ifLeft = { error ->
                     specialitiesError.postValue(error)
                 }, ifRight = { dataResponseWrapper ->
                     val specialties = dataResponseWrapper.data.response.convertToSpecialties()
-                    specialitiesLiveData.postValue(DataWrapper(dataResponseWrapper.isFromRemote, specialties.toList()))
+                    specialitiesLiveData.postValue(
+                        DataWrapper(
+                            dataResponseWrapper.isFromRemote,
+                            specialties.toList()
+                        )
+                    )
                 })
             }
         }

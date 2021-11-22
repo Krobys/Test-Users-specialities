@@ -16,8 +16,8 @@ import com.example.testapp.tools.validateName
 import java.text.SimpleDateFormat
 import java.util.*
 
-class DetailedUserFragment(override val layoutId: Int = R.layout.fragment_detailed_user)
-    : BaseFragmentWithoutViewModel<FragmentDetailedUserBinding>(), SharedFragmentChild{
+class DetailedUserFragment(override val layoutId: Int = R.layout.fragment_detailed_user) :
+    BaseFragmentWithoutViewModel<FragmentDetailedUserBinding>(), SharedFragmentChild {
 
     override val sharedParentActivity: SharedActivityParent?
         get() = activity as? MainActivity
@@ -35,34 +35,49 @@ class DetailedUserFragment(override val layoutId: Int = R.layout.fragment_detail
         binding.rootLayout.setPaddingBottom(systemNavigationBarSize)
     }
 
-    private fun setUpUser(user: UsersResponse.User){
+    private fun setUpUser(user: UsersResponse.User) {
         binding.run {
             Glide.with(binding.photoImageView)
                 .load(user.avatrUrl)
-                .error(ContextCompat.getDrawable(requireContext(), R.drawable.ic_launcher_foreground))
+                .error(
+                    ContextCompat.getDrawable(
+                        requireContext(),
+                        R.drawable.ic_launcher_foreground
+                    )
+                )
                 .into(binding.photoImageView)
 
             firstNameTv.text = user.fName.validateName()
             secondNameTv.text = user.lName.validateName()
             birthdayTv.text = if (user.birthday.isNullOrEmpty()) "-" else user.birthday
 
-            if (user.birthday.isNullOrEmpty()){
+            if (user.birthday.isNullOrEmpty()) {
                 yearsTv.setVisible(false)
-            }else{
+            } else {
                 yearsTv.setVisible(true)
 
-                SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(user.birthday)?.let { birthdayDate ->
-                    val years = getDiffYears(birthdayDate, Calendar.getInstance().time)
-                    if (years < 150){
-                        binding.yearsTv.text = resources.getQuantityString(R.plurals.years_plural, years, years)
-                    }else{
-                        SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(user.birthday)?.let { birthdayDateOtherType ->
-                            val yearsOther = getDiffYears(birthdayDateOtherType, Calendar.getInstance().time)
-                            binding.yearsTv.text = resources.getQuantityString(R.plurals.years_plural, yearsOther, yearsOther)
+                SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).parse(user.birthday)
+                    ?.let { birthdayDate ->
+                        val years = getDiffYears(birthdayDate, Calendar.getInstance().time)
+                        if (years < 150) {
+                            binding.yearsTv.text =
+                                resources.getQuantityString(R.plurals.years_plural, years, years)
+                        } else {
+                            SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).parse(user.birthday)
+                                ?.let { birthdayDateOtherType ->
+                                    val yearsOther = getDiffYears(
+                                        birthdayDateOtherType,
+                                        Calendar.getInstance().time
+                                    )
+                                    binding.yearsTv.text = resources.getQuantityString(
+                                        R.plurals.years_plural,
+                                        yearsOther,
+                                        yearsOther
+                                    )
+                                }
                         }
-                    }
 
-                }
+                    }
             }
 
             binding.specialtyTv.text = user.specialty.map { it.name }.joinToString(", ")
@@ -71,7 +86,7 @@ class DetailedUserFragment(override val layoutId: Int = R.layout.fragment_detail
 
     private fun getDiffYears(first: Date, last: Date): Int {
 
-        fun Date.toCalendar() : Calendar{
+        fun Date.toCalendar(): Calendar {
             return Calendar.getInstance().apply {
                 timeInMillis = this@toCalendar.time
             }
@@ -87,12 +102,12 @@ class DetailedUserFragment(override val layoutId: Int = R.layout.fragment_detail
     }
 
     override fun sharedDataReceived(data: Any, identifier: String) {
-        if (data is UsersResponse.User && identifier == USER_KEY){
+        if (data is UsersResponse.User && identifier == USER_KEY) {
             setUpUser(data)
         }
     }
 
-    companion object{
+    companion object {
         final val USER_KEY = "USER_KEY"
     }
 }

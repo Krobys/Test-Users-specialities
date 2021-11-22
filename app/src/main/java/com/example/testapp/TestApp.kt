@@ -21,20 +21,20 @@ class TestApp : DaggerApplication() {
         initTimber()
     }
 
-    fun setNavigatorToHolder(navigator: AppNavigator){
+    fun setNavigatorToHolder(navigator: AppNavigator) {
         lastNavigator = navigator
         navigatorHolder.setNavigator(navigator)
     }
 
-    fun removeNavigator(){
+    fun removeNavigator() {
         navigatorHolder.removeNavigator()
     }
 
-    fun getLastNavigator(): AppNavigator?{
+    fun getLastNavigator(): AppNavigator? {
         return lastNavigator
     }
 
-    private fun initTimber(){
+    private fun initTimber() {
         if (BuildConfig.DEBUG) {
             Timber.plant(object : Timber.DebugTree() {
                 val APP_TAG = "TEST_APP"

@@ -44,29 +44,29 @@ class UsersFragment(override val layoutId: Int = R.layout.fragment_users) :
         isKeyboardOpen: Boolean
     ) {
         binding.run {
-            title.setPadding(0,systemStatusBarSize,0,0)
+            title.setPadding(0, systemStatusBarSize, 0, 0)
             usersRv.setPaddingBottom(systemNavigationBarSize)
         }
     }
 
-    private fun onUserClick(user: UsersResponse.User){
+    private fun onUserClick(user: UsersResponse.User) {
         sendDataToReceiver(DetailedUserFragment::class.java, user, USER_KEY)
         router.navigateTo(DetailedUserFragment::class.java.asScreenAnimated(TransitionAnimation.HORISONTAL))
     }
 
-    private fun requestUsersForSpeciality(specialty: UsersResponse.User.Specialty){
+    private fun requestUsersForSpeciality(specialty: UsersResponse.User.Specialty) {
         viewModel.getUsersForSpeciality(specialty.specialtyId)
     }
 
     override fun sharedDataReceived(data: Any, identifier: String) {
-        if (data is UsersResponse.User.Specialty && identifier == SPECIALITY_KEY){
+        if (data is UsersResponse.User.Specialty && identifier == SPECIALITY_KEY) {
             viewModel.userSpecialty = data
             binding.title.text = data.name
             requestUsersForSpeciality(data)
         }
     }
 
-    companion object{
+    companion object {
         final val SPECIALITY_KEY = "SPECIALITY_KEY"
     }
 }

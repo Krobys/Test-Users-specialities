@@ -20,9 +20,12 @@ class MainActivity() : BaseActivityWithNavigator(), SharedActivityParent {
 
     override fun initViews() {
         StatusBarUtil.setTransparent(this)
-        router.newRootScreen(SpecialitiesFragment::class.java.asScreenAnimated(BaseFragmentWithoutViewModel.TransitionAnimation.NO_ANIMATION))
+        router.newRootScreen(
+            SpecialitiesFragment::class.java.asScreenAnimated(
+                BaseFragmentWithoutViewModel.TransitionAnimation.NO_ANIMATION
+            )
+        )
     }
-
 
 
 }

@@ -20,7 +20,8 @@ class SpecialitiesAdapter(private val specialtyClickCallback: ((UsersResponse.Us
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpecialityViewHolder {
-        val binding = ItemSpecialityBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            ItemSpecialityBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SpecialityViewHolder(binding)
     }
 
